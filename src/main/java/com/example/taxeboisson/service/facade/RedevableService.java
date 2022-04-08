@@ -1,21 +1,18 @@
-package com.example.taxeboisson.dao;
+package com.example.taxeboisson.service.facade;
+
 
 import com.example.taxeboisson.bean.Redevable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface RedevableDao extends JpaRepository<Redevable, Long> {
+public interface RedevableService {
+
+    int save(Redevable redevable);
 
     Redevable findByCin(String cin);
     int deleteByCin(String cin);
 
     List<Redevable> findByTypeRedevableCode(String code);
     int deleteByTypeRedevableCode(String code);
-
-
-
 
 }

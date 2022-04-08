@@ -1,13 +1,10 @@
-package com.example.taxeboisson.dao;
+package com.example.taxeboisson.service.facade;
 
 import com.example.taxeboisson.bean.TaxeBoisson;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface TaxeBoissonDao extends JpaRepository<TaxeBoisson,Long> {
+public interface TaxeBoissonService {
 
     TaxeBoisson findByRef(String ref);
     int deleteByRef(String  ref);
@@ -17,7 +14,4 @@ public interface TaxeBoissonDao extends JpaRepository<TaxeBoisson,Long> {
 
     List<TaxeBoisson> findByLocalRef(String ref);
     int deleteByLocalRef(String ref);
-
-
-
 }

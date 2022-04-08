@@ -1,13 +1,12 @@
-package com.example.taxeboisson.dao;
+package com.example.taxeboisson.service.facade;
 
 import com.example.taxeboisson.bean.Local;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface LocalDao extends JpaRepository<Local,Long> {
+public interface LocalService {
+
+    int save(Local local);
 
     Local findByRef(String ref);
     int deleteByRef(String ref);
@@ -20,6 +19,4 @@ public interface LocalDao extends JpaRepository<Local,Long> {
 
     List<Local> findBySecteurCode(String code);
     int deleteBySecteurCode(String code);
-
-
 }
