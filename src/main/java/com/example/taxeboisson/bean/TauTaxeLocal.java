@@ -11,8 +11,7 @@ public class TauTaxeLocal {
     private Long id;
     private  String code;
 
-    @OneToOne
-    private CategorieLocal categorieLocal;
+
     private double pourcentage;
 
     public Long getId() {
@@ -31,13 +30,7 @@ public class TauTaxeLocal {
         this.code = code;
     }
 
-    public CategorieLocal getCategorieLocal() {
-        return categorieLocal;
-    }
 
-    public void setCategorieLocal(CategorieLocal categorieLocal) {
-        this.categorieLocal = categorieLocal;
-    }
 
     public double getPourcentage() {
         return pourcentage;
