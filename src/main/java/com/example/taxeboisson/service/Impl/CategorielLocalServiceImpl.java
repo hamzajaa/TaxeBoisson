@@ -21,8 +21,6 @@ public class CategorielLocalServiceImpl implements CategorieLocalService {
     @Override
     public int save(CategorieLocal categorieLocal) {
 
-        TauTaxeLocal tauTaxeLocal = tauTaxeLocalService.findByCode(categorieLocal.getTauTaxeLocal().getCode());
-        categorieLocal.setTauTaxeLocal(tauTaxeLocal);
         if (findByCode(categorieLocal.getCode()) != null) {
             return -1;
         } else {

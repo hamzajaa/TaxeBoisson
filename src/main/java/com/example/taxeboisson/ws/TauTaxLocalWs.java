@@ -12,6 +12,21 @@ public class TauTaxLocalWs {
     @Autowired
     private TauTaxeLocalService tauTaxeLocalService;
 
+    @PutMapping("/ref/{ref}/nvPer/{nvPer}")
+    public int updatePer(@PathVariable String ref,@PathVariable double nvPer) {
+        return tauTaxeLocalService.updatePer(ref, nvPer);
+    }
+
+    @GetMapping("/categorie/code/{code}")
+    public TauTaxeLocal findByCategorieLocalCode(@PathVariable String code) {
+        return tauTaxeLocalService.findByCategorieLocalCode(code);
+    }
+
+    @DeleteMapping("/categorie/code/{code}")
+    public int deleteByCategorieLocalCode(@PathVariable String code) {
+        return tauTaxeLocalService.deleteByCategorieLocalCode(code);
+    }
+
     @PostMapping("/")
     public int save(@RequestBody TauTaxeLocal tauTaxeLocal) {
         return tauTaxeLocalService.save(tauTaxeLocal);

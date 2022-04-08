@@ -10,5 +10,8 @@ public interface TauTaxeLocalDao extends JpaRepository<TauTaxeLocal, Long> {
    TauTaxeLocal findByCode(String code);
    int deleteByCode(String code);
 
+   TauTaxeLocal findByCategorieLocalCode(String code);
+   int deleteByCategorieLocalCode(String code);
+
 
 }

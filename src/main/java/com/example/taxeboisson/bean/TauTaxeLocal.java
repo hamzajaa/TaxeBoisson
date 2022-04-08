@@ -10,8 +10,8 @@ public class TauTaxeLocal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private  String code;
-
-
+    @ManyToOne
+    private CategorieLocal categorieLocal;
     private double pourcentage;
 
     public Long getId() {
@@ -20,6 +20,14 @@ public class TauTaxeLocal {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public CategorieLocal getCategorieLocal() {
+        return categorieLocal;
+    }
+
+    public void setCategorieLocal(CategorieLocal categorieLocal) {
+        this.categorieLocal = categorieLocal;
     }
 
     public String getCode() {

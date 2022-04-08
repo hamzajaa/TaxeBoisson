@@ -14,6 +14,11 @@ public class TaxeBoissonWs {
     @Autowired
     private TaxeBoissonService taxeBoissonService;
 
+    @PostMapping("/")
+    public int save(@RequestBody TaxeBoisson taxeBoisson) {
+        return taxeBoissonService.save(taxeBoisson);
+    }
+
     @GetMapping("/ref/{ref}")
     public TaxeBoisson findByRef(@PathVariable String ref) {
         return taxeBoissonService.findByRef(ref);

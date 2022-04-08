@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface TaxeBoissonService {
 
+    int save(TaxeBoisson taxeBoisson);
+
     TaxeBoisson findByRef(String ref);
     int deleteByRef(String  ref);
 

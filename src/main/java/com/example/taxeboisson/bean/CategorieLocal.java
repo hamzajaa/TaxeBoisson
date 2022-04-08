@@ -11,8 +11,6 @@ public class CategorieLocal {
     private  String code;
     private String libelle;
 
-    @OneToOne
-    private TauTaxeLocal tauTaxeLocal;
 
     public Long getId() {
         return id;
@@ -20,14 +18,6 @@ public class CategorieLocal {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public TauTaxeLocal getTauTaxeLocal() {
-        return tauTaxeLocal;
-    }
-
-    public void setTauTaxeLocal(TauTaxeLocal tauTaxeLocal) {
-        this.tauTaxeLocal = tauTaxeLocal;
     }
 
     public String getCode() {
