@@ -24,7 +24,6 @@ public class RedevableServiceImpl implements RedevableService {
     @Autowired
     private LocalService localService;
     @Autowired
-    @Lazy
     private TaxeBoissonService taxeBoissonService;
 
     @Override

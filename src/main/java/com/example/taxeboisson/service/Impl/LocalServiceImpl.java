@@ -22,7 +22,6 @@ public class LocalServiceImpl implements LocalService {
     @Autowired
     private LocalDao localDao;
     @Autowired
-    @Lazy
     private RedevableService redevableService;
     @Autowired
     private SecteurService secteurService;

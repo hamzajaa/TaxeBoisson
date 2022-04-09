@@ -15,7 +15,6 @@ public class CategorielLocalServiceImpl implements CategorieLocalService {
     @Autowired
     private CategorielLocalDao categorielLocalDao;
     @Autowired
-    @Lazy
     private TauTaxeLocalService tauTaxeLocalService;
 
     @Override

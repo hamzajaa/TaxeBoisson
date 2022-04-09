@@ -15,7 +15,6 @@ public class TypeRedevableServiceImpl implements TypeRedevableService {
     @Autowired
     private TypeRedevableDao typeRedevableDao;
     @Autowired
-    @Lazy
     private RedevableService redevableService;
 
 
@@ -44,7 +43,7 @@ public class TypeRedevableServiceImpl implements TypeRedevableService {
     @Transactional
     public int deleteTypewhithsRedevables(String code) {
         int res1 = redevableService.deleteByTypeRedevableCode(code);
-        int res2 =  typeRedevableDao.deleteByCode(code);
-        return res1+res2;
+        int res2 = typeRedevableDao.deleteByCode(code);
+        return res1 + res2;
     }
 }
