@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface LocalService {
 
-    int save(Local local);
+
+
+    int exec(Local local);
 
     Local findByRef(String ref);
     int deleteByRef(String ref);
@@ -21,5 +23,12 @@ public interface LocalService {
     int deleteBySecteurCode(String code);
 
     int deleteLocalWithTaxes(String ref);
+
+
+    Local findByAdresse(String adresse);
+    int deleteByAdresse(String adresse);
+
+    Local findByRue(String rue);
+    int deleteByRue(String rue);
 
 }

@@ -15,8 +15,8 @@ public class LocalWs {
     private LocalService localService;
 
     @PostMapping("/")
-    public int save(@RequestBody Local local) {
-        return localService.save(local);
+    public int exec(@RequestBody Local local) {
+        return localService.exec(local);
     }
 
     @GetMapping("/ref/{ref}")
@@ -59,8 +59,28 @@ public class LocalWs {
         return localService.deleteBySecteurCode(code);
     }
 
+    @GetMapping("/adresse/{adresse}")
+    public Local findByAdresse(@PathVariable String adresse) {
+        return localService.findByAdresse(adresse);
+    }
+
+    @DeleteMapping("/adresse/{adresse}")
+    public int deleteByAdresse(@PathVariable String adresse) {
+        return localService.deleteByAdresse(adresse);
+    }
+
     @DeleteMapping("/local-tax/ref/{ref}")
     public int deleteLocalWithTaxes(@PathVariable String ref) {
         return localService.deleteLocalWithTaxes(ref);
+    }
+
+    @GetMapping("/rue/{rue}")
+    public Local findByRue(@PathVariable String rue) {
+        return localService.findByRue(rue);
+    }
+
+    @DeleteMapping("/rue/{rue}")
+    public int deleteByRue(@PathVariable String rue) {
+        return localService.deleteByRue(rue);
     }
 }

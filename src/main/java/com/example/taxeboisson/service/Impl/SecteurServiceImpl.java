@@ -33,4 +33,14 @@ public class SecteurServiceImpl implements SecteurService {
     public int deleteByCode(String code) {
         return secteurDao.deleteByCode(code);
     }
+
+    @Override
+    public Secteur findByLibelle(String libelle) {
+        return secteurDao.findByLibelle(libelle);
+    }
+
+    @Override
+    public int deleteByLibelle(String libelle) {
+        return secteurDao.deleteByLibelle(libelle);
+    }
 }

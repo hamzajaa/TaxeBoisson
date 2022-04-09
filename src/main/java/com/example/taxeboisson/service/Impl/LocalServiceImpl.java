@@ -39,9 +39,9 @@ public class LocalServiceImpl implements LocalService {
             local.setCategorieLocal(categorieLocal);
     }
 
-    @Override
-    public int save(Local local) {
-        prepare(local);
+
+    private int validate(Local local) {
+
         Redevable redevable = redevableService.findByCin(local.getRedevable().getCin());
         Secteur secteur = secteurService.findByCode(local.getSecteur().getCode());
         CategorieLocal categorieLocal = categorieLocalService.findByCode(local.getCategorieLocal().getCode());
@@ -55,10 +55,21 @@ public class LocalServiceImpl implements LocalService {
         } else if (secteur == null) {
             return -4;
         } else {
-            localDao.save(local);
             return 1;
         }
 
+    }
+
+    @Override
+    public int exec(Local local){
+        prepare(local);
+        int res = validate(local);
+        if (res < 0){
+            return res;
+        }else {
+            localDao.save(local);
+            return 1;
+        }
     }
 
     @Override
@@ -111,5 +122,27 @@ public class LocalServiceImpl implements LocalService {
         int res1 = taxeBoissonService.deleteByLocalRef(ref);
         int res2 = localDao.deleteByRef(ref);
         return res1+res2;
+    }
+
+    @Override
+    public Local findByAdresse(String adresse) {
+        return localDao.findByAdresse(adresse);
+    }
+
+    @Override
+    @Transactional
+    public int deleteByAdresse(String adresse) {
+        return localDao.deleteByAdresse(adresse);
+    }
+
+    @Override
+    public Local findByRue(String rue) {
+        return localDao.findByRue(rue);
+    }
+
+    @Override
+    @Transactional
+    public int deleteByRue(String rue) {
+        return localDao.deleteByRue(rue);
     }
 }

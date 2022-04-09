@@ -9,4 +9,7 @@ public interface SecteurDao extends JpaRepository<Secteur, Long> {
 
     Secteur findByCode(String code);
     int deleteByCode(String code);
+
+    Secteur findByLibelle(String libelle);
+    int deleteByLibelle(String libelle);
 }

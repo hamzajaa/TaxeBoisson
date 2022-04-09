@@ -21,7 +21,12 @@ public interface LocalDao extends JpaRepository<Local,Long> {
     List<Local> findBySecteurCode(String code);
     int deleteBySecteurCode(String code);
 
-    int deleteLocalWithTaxes(String ref);
+
+    Local findByAdresse(String adresse);
+    int deleteByAdresse(String adresse);
+
+    Local findByRue(String rue);
+    int deleteByRue(String rue);
 
 
 }

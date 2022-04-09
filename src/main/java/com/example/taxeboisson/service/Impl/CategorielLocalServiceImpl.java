@@ -3,7 +3,6 @@ package com.example.taxeboisson.service.Impl;
 import com.example.taxeboisson.bean.CategorieLocal;
 import com.example.taxeboisson.dao.CategorielLocalDao;
 import com.example.taxeboisson.service.facade.CategorieLocalService;
-import com.example.taxeboisson.service.facade.TauTaxeLocalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +11,6 @@ public class CategorielLocalServiceImpl implements CategorieLocalService {
 
     @Autowired
     private CategorielLocalDao categorielLocalDao;
-    @Autowired
-    private TauTaxeLocalService tauTaxeLocalService;
 
     @Override
     public int save(CategorieLocal categorieLocal) {

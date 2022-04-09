@@ -23,7 +23,7 @@ public class TauTaxeLocalServiceImpl implements TauTaxeLocalService {
         tauTaxeLocal.setCategorieLocal(categorieLocal);
         if (findByCode(tauTaxeLocal.getCode()) != null) {
             return -1;
-        } else if (tauTaxeLocal.getPourcentage() < 0) {
+        } else if (tauTaxeLocal.getPourcentage() <= 0) {
             return -2;
         } else if (categorieLocal == null || categorieLocal.getCode().isEmpty()) {
             return -3;
@@ -38,7 +38,7 @@ public class TauTaxeLocalServiceImpl implements TauTaxeLocalService {
         TauTaxeLocal tauTaxeLocal = findByCode(ref);
         if (tauTaxeLocal == null) {
             return -1;
-        } else if (nvPer < 0) {
+        } else if (nvPer <= 0) {
             return -2;
         } else {
             tauTaxeLocal.setPourcentage(nvPer);
