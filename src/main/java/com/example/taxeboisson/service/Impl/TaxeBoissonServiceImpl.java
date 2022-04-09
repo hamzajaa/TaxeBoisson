@@ -91,6 +91,12 @@ public class TaxeBoissonServiceImpl implements TaxeBoissonService {
     }
 
     @Override
+    @Transactional
+    public int deleteByRedevableCin(String cin) {
+        return taxeBoissonDao.deleteByRedevableCin(cin);
+    }
+
+    @Override
     public List<TaxeBoisson> findByLocalRef(String ref) {
         return taxeBoissonDao.findByLocalRef(ref);
     }

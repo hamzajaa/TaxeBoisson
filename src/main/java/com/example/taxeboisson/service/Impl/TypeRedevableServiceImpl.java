@@ -37,8 +37,14 @@ public class TypeRedevableServiceImpl implements TypeRedevableService {
     @Override
     @Transactional
     public int deleteByCode(String code) {
+        return typeRedevableDao.deleteByCode(code);
+    }
+
+    @Override
+    @Transactional
+    public int deleteTypewhithsRedevables(String code) {
         int res1 = redevableService.deleteByTypeRedevableCode(code);
-        int res2 = typeRedevableDao.deleteByCode(code);
-        return res1 + res2;
+        int res2 =  typeRedevableDao.deleteByCode(code);
+        return res1+res2;
     }
 }

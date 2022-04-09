@@ -14,6 +14,8 @@ public interface TaxeBoissonService {
     TaxeBoisson findByAnnee(int annee);
     int deleteByAnnee(int annee);
 
+    int deleteByRedevableCin(String cin);
+
     List<TaxeBoisson> findByLocalRef(String ref);
     int deleteByLocalRef(String ref);
 }

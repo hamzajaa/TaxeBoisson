@@ -48,4 +48,9 @@ public class TaxeBoissonWs {
     public int deleteByLocalRef(@PathVariable String ref) {
         return taxeBoissonService.deleteByLocalRef(ref);
     }
+
+    @DeleteMapping("/redevable/cin/{cin}")
+    public int deleteByRedevableCin(@PathVariable String cin) {
+        return taxeBoissonService.deleteByRedevableCin(cin);
+    }
 }

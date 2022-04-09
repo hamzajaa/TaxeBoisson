@@ -38,4 +38,9 @@ public class RedevableWs {
     public int deleteByTypeRedevableCode(@PathVariable String code) {
         return redevableService.deleteByTypeRedevableCode(code);
     }
+
+    @DeleteMapping("/delete-r-l-t/cin/{cin}")
+    public int deleteRedevableWithLocalAndTa(@PathVariable String cin) {
+        return redevableService.deleteRedevableWithLocalAndTa(cin);
+    }
 }

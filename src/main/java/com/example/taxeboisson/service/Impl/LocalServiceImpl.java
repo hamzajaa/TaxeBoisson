@@ -10,6 +10,7 @@ import com.example.taxeboisson.service.facade.LocalService;
 import com.example.taxeboisson.service.facade.RedevableService;
 import com.example.taxeboisson.service.facade.SecteurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,7 @@ public class LocalServiceImpl implements LocalService {
     @Autowired
     private LocalDao localDao;
     @Autowired
+    @Lazy
     private RedevableService redevableService;
     @Autowired
     private SecteurService secteurService;

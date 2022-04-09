@@ -3,9 +3,12 @@ package com.example.taxeboisson.service.Impl;
 import com.example.taxeboisson.bean.Redevable;
 import com.example.taxeboisson.bean.TypeRedevable;
 import com.example.taxeboisson.dao.RedevableDao;
+import com.example.taxeboisson.service.facade.LocalService;
 import com.example.taxeboisson.service.facade.RedevableService;
+import com.example.taxeboisson.service.facade.TaxeBoissonService;
 import com.example.taxeboisson.service.facade.TypeRedevableService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +21,11 @@ public class RedevableServiceImpl implements RedevableService {
     private RedevableDao redevableDao;
     @Autowired
     private TypeRedevableService typeRedevableService;
+    @Autowired
+    private LocalService localService;
+    @Autowired
+    @Lazy
+    private TaxeBoissonService taxeBoissonService;
 
     @Override
     public int save(Redevable redevable) {
@@ -25,11 +33,11 @@ public class RedevableServiceImpl implements RedevableService {
         TypeRedevable typeRedevable = typeRedevableService.findByCode(redevable.getTypeRedevable().getCode());
         redevable.setTypeRedevable(typeRedevable);
 
-        if (findByCin(redevable.getCin()) != null){
+        if (findByCin(redevable.getCin()) != null) {
             return -1;
-        }else if (typeRedevable == null || typeRedevable.getCode().isEmpty()){
+        } else if (typeRedevable == null || typeRedevable.getCode().isEmpty()) {
             return -2;
-        }else {
+        } else {
             redevableDao.save(redevable);
             return 1;
         }
@@ -55,5 +63,14 @@ public class RedevableServiceImpl implements RedevableService {
     @Transactional
     public int deleteByTypeRedevableCode(String code) {
         return redevableDao.deleteByTypeRedevableCode(code);
+    }
+
+    @Override
+    @Transactional
+    public int deleteRedevableWithLocalAndTa(String cin){
+        int res1 = taxeBoissonService.deleteByRedevableCin(cin);
+        int res2 = localService.deleteByRedevableCin(cin);
+        int res3 = redevableDao.deleteByCin(cin);
+        return res1+res2+res3;
     }
 }

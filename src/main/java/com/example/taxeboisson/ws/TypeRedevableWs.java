@@ -3,6 +3,7 @@ package com.example.taxeboisson.ws;
 import com.example.taxeboisson.bean.TypeRedevable;
 import com.example.taxeboisson.service.facade.TypeRedevableService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,5 +26,10 @@ public class TypeRedevableWs {
     @DeleteMapping("/code/{code}")
     public int deleteByCode(@PathVariable String code) {
         return typeRedevableService.deleteByCode(code);
+    }
+
+    @DeleteMapping("/type-with-redevable/code/{code}")
+    public int deleteTypewhithsRedevables(@PathVariable String code) {
+        return typeRedevableService.deleteTypewhithsRedevables(code);
     }
 }

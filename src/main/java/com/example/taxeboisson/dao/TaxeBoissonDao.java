@@ -15,6 +15,8 @@ public interface TaxeBoissonDao extends JpaRepository<TaxeBoisson,Long> {
     TaxeBoisson findByAnnee(int annee);
     int deleteByAnnee(int annee);
 
+    int deleteByRedevableCin(String cin);
+
     List<TaxeBoisson> findByLocalRef(String ref);
     int deleteByLocalRef(String ref);
 
