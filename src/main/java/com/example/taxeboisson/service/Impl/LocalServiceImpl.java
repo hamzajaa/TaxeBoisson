@@ -5,12 +5,8 @@ import com.example.taxeboisson.bean.Local;
 import com.example.taxeboisson.bean.Redevable;
 import com.example.taxeboisson.bean.Secteur;
 import com.example.taxeboisson.dao.LocalDao;
-import com.example.taxeboisson.service.facade.CategorieLocalService;
-import com.example.taxeboisson.service.facade.LocalService;
-import com.example.taxeboisson.service.facade.RedevableService;
-import com.example.taxeboisson.service.facade.SecteurService;
+import com.example.taxeboisson.service.facade.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,16 +23,28 @@ public class LocalServiceImpl implements LocalService {
     private SecteurService secteurService;
     @Autowired
     private CategorieLocalService categorieLocalService;
+    @Autowired
+    private TaxeBoissonService taxeBoissonService;
+
+    private void prepare(Local local) {
+
+        Redevable redevable = redevableService.findByCin(local.getRedevable().getCin());
+        if (redevable != null)
+            local.setRedevable(redevable);
+        Secteur secteur = secteurService.findByCode(local.getSecteur().getCode());
+        if (secteur != null)
+            local.setSecteur(secteur);
+        CategorieLocal categorieLocal = categorieLocalService.findByCode(local.getCategorieLocal().getCode());
+        if (categorieLocal != null)
+            local.setCategorieLocal(categorieLocal);
+    }
 
     @Override
     public int save(Local local) {
-
+        prepare(local);
         Redevable redevable = redevableService.findByCin(local.getRedevable().getCin());
-        local.setRedevable(redevable);
         Secteur secteur = secteurService.findByCode(local.getSecteur().getCode());
-        local.setSecteur(secteur);
         CategorieLocal categorieLocal = categorieLocalService.findByCode(local.getCategorieLocal().getCode());
-        local.setCategorieLocal(categorieLocal);
 
         if (findByRef(local.getRef()) != null) {
             return -1;
@@ -95,5 +103,13 @@ public class LocalServiceImpl implements LocalService {
     @Transactional
     public int deleteBySecteurCode(String code) {
         return localDao.deleteBySecteurCode(code);
+    }
+
+    @Override
+    @Transactional
+    public int deleteLocalWithTaxes(String ref) {
+        int res1 = taxeBoissonService.deleteByLocalRef(ref);
+        int res2 = localDao.deleteByRef(ref);
+        return res1+res2;
     }
 }

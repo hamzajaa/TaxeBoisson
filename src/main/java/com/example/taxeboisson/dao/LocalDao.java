@@ -21,5 +21,7 @@ public interface LocalDao extends JpaRepository<Local,Long> {
     List<Local> findBySecteurCode(String code);
     int deleteBySecteurCode(String code);
 
+    int deleteLocalWithTaxes(String ref);
+
 
 }

@@ -53,8 +53,14 @@ public class LocalWs {
     public List<Local> findBySecteurCode(@PathVariable String code) {
         return localService.findBySecteurCode(code);
     }
+
     @DeleteMapping("/secteur/code/{code}")
     public int deleteBySecteurCode(@PathVariable String code) {
         return localService.deleteBySecteurCode(code);
+    }
+
+    @DeleteMapping("/local-tax/ref/{ref}")
+    public int deleteLocalWithTaxes(@PathVariable String ref) {
+        return localService.deleteLocalWithTaxes(ref);
     }
 }

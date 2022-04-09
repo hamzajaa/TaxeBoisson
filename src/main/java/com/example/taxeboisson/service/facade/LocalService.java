@@ -19,4 +19,7 @@ public interface LocalService {
 
     List<Local> findBySecteurCode(String code);
     int deleteBySecteurCode(String code);
+
+    int deleteLocalWithTaxes(String ref);
+
 }

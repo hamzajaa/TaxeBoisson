@@ -1,12 +1,10 @@
 package com.example.taxeboisson.service.Impl;
 
 import com.example.taxeboisson.bean.CategorieLocal;
-import com.example.taxeboisson.bean.TauTaxeLocal;
 import com.example.taxeboisson.dao.CategorielLocalDao;
 import com.example.taxeboisson.service.facade.CategorieLocalService;
 import com.example.taxeboisson.service.facade.TauTaxeLocalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 @Service
